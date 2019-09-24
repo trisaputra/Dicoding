@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Menu">
+        <menu>
+            <item
+                android:id="@+id/nav_movie"
+                android:icon="@drawable/ic_video_camera"
+                android:title="@string/film" />
+            <item
+                android:id="@+id/nav_tv"
+                android:icon="@drawable/ic_television"
+                android:title="@string/televisi" />
+
+        </menu>
+    </item>
+
+   <item android:title="Favorites">
+       <menu>
+           <item
+               android:id="@+id/nav_favorite"
+               android:icon="@drawable/ic_favorite"
+               android:title="Favorite" />
+       </menu>
+   </item>
+
+    <item android:title="Notifikasi">
+        <menu>
+            <item
+                android:id="@+id/nav_alarm"
+                android:icon="@drawable/ic_notification"
+                android:title="Pengingat Jadwal" />
+        </menu>
+    </item>
+
+</menu>
