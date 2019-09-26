@@ -2,4 +2,11 @@
     <string name="app_name">Submission5</string>
     <string name="film">Movie</string>
     <string name="televisi">Tv</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="cd_main_image">main image</string>
+    <string name="imax">iMAX</string>
+    <string name="detail">Detail</string>
+    <string name="judul">Judul</string>
+
 </resources>
