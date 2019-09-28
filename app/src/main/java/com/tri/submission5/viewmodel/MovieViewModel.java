@@ -1,5 +1,7 @@
 package com.tri.submission5.viewmodel;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -30,9 +32,15 @@ public class MovieViewModel extends ViewModel {
         String url;
 
         url = "https://api.themoviedb.org/3/discover/movie?api_key=" + API_KEY + "&language=en-US";
+        final ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Mohon tunggu...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                progressDialog.dismiss();
                 try {
                     String result = new String(responseBody);
                     JSONObject resps = new JSONObject(result);
