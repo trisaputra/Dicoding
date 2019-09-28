@@ -1,5 +1,7 @@
 package com.tri.submission5.viewmodel;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Movie;
 import android.util.Log;
 
@@ -25,7 +27,7 @@ public class TvViewModel extends ViewModel {
     private MutableLiveData<ArrayList<MovieTvModels>> data = new MutableLiveData<>();
     private static final String API_KEY = "9da414da76778362a273d84187e76699";
 
-    public void setData(@Nullable String cari){
+    public void setData(Context context, @Nullable String cari){
         AsyncHttpClient client = new AsyncHttpClient();
         final ArrayList<MovieTvModels> dataList = new ArrayList<>();
         String url;
@@ -35,9 +37,15 @@ public class TvViewModel extends ViewModel {
         } else {
             url = "https://api.themoviedb.org/3/search/movie?api_key="+API_KEY+"&language=en-US&query="+cari;
         }
+        final ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Mohon tunggu...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                progressDialog.dismiss();
                 try {
                     String result = new String(responseBody);
                     JSONObject resps = new JSONObject(result);

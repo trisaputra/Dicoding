@@ -70,13 +70,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         vModel = ViewModelProviders.of(this).get(MovieViewModel.class);
         vModel.getData().observe(this, getDataObserve);
-        vModel.setData(null);
+        vModel.setData(this,null);
 
         btn_cari.setOnClickListener(v -> {
             if (et_cari.getText().toString().trim().isEmpty()) {
-                vModel.setData(null);
+                vModel.setData(this,null);
             } else {
-                vModel.setData(et_cari.getText().toString());
+                vModel.setData(this, et_cari.getText().toString());
             }
         });
     }
