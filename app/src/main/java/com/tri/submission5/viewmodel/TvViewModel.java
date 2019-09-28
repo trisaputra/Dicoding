@@ -33,9 +33,9 @@ public class TvViewModel extends ViewModel {
         String url;
 
         if (cari == null) {
-            url = "https://api.themoviedb.org/3/discover/movie?api_key=" + API_KEY + "&language=en-US";
+            url = "https://api.themoviedb.org/3/discover/tv?api_key=" + API_KEY + "&language=en-US";
         } else {
-            url = "https://api.themoviedb.org/3/search/movie?api_key="+API_KEY+"&language=en-US&query="+cari;
+            url = "https://api.themoviedb.org/3/search/tv?api_key="+API_KEY+"&language=en-US&query="+cari;
         }
         final ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(context);

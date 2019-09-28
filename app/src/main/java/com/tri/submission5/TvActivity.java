@@ -52,6 +52,8 @@ public class TvActivity extends AppCompatActivity implements NavigationView.OnNa
         drawer = findViewById(R.id.drawer_layout);
         recyclerView = findViewById(R.id.recyclerview);
         navigationView = findViewById(R.id.navigation);
+        et_cari = findViewById(R.id.et_cari);
+        btn_cari = findViewById(R.id.btn_cari);
 
         navigationView.setNavigationItemSelectedListener(this);
 
