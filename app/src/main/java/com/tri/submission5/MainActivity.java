@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView recyclerView;
     private RvMovieAdapter adapter;
     private NavigationView navigationView;
+    private EditText et_cari;
+    private Button btn_cari;
 
     boolean doubleBackToExitPressedOnce = false;
     @Override
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer = findViewById(R.id.drawer_layout);
         recyclerView = findViewById(R.id.recyclerview);
         navigationView = findViewById(R.id.navigation);
+        et_cari = findViewById(R.id.et_cari);
+        btn_cari = findViewById(R.id.btn_cari);
 
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -65,7 +70,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         vModel = ViewModelProviders.of(this).get(MovieViewModel.class);
         vModel.getData().observe(this, getDataObserve);
-        vModel.setData();
+        vModel.setData(null);
+
+        btn_cari.setOnClickListener(v -> {
+            if (et_cari.getText().toString().trim().isEmpty()) {
+                vModel.setData(null);
+            } else {
+                vModel.setData(et_cari.getText().toString());
+            }
+        });
     }
 
     private Observer<ArrayList<MovieTvModels>> getDataObserve = new Observer<ArrayList<MovieTvModels>>() {
@@ -84,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_tv) {
-            Intent intent = new Intent(MainActivity.this, TvActivity.class);
+            Intent intent = new Intent(mContext, TvActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

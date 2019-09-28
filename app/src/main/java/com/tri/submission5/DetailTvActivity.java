@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.tri.submission5.domain.MovieTvModels;
 
 import java.util.Objects;
@@ -18,11 +20,14 @@ public class DetailTvActivity extends AppCompatActivity {
     private MovieTvModels data;
     private TextView idTv, judul, release, populer, ratting, overview;
     private ImageView gambar;
+    private FloatingActionButton fab;
+
+    private boolean isFav = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_tv_actvitiy);
+        setContentView(R.layout.activity_detail);
 
         toolbar = findViewById(R.id.toolbar);
         idTv = findViewById(R.id.tv_id);
@@ -32,6 +37,7 @@ public class DetailTvActivity extends AppCompatActivity {
         populer = findViewById(R.id.tv_populer);
         ratting = findViewById(R.id.tv_ratting);
         overview = findViewById(R.id.tv_deksripsi);
+        fab = findViewById(R.id.fab_favorite);
 
         data = getIntent().getParcelableExtra("data_tv");
 
@@ -44,6 +50,18 @@ public class DetailTvActivity extends AppCompatActivity {
         Glide.with(this)
                 .load("https://image.tmdb.org/t/p/w185"+ data.getPoster())
                 .into(gambar);
+
+        fab.setOnClickListener(v -> {
+            if (!isFav) {
+                fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
+                Snackbar.make(fab, "sukses", Snackbar.LENGTH_SHORT).show();
+                isFav = true;
+            } else {
+                fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_false));
+                Snackbar.make(fab, "sukses hapus", Snackbar.LENGTH_SHORT).show();
+                isFav = false;
+            }
+        });
 
         toolbar.setTitle("Detail Movie & Tv");
         setSupportActionBar(toolbar);

@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,11 +38,13 @@ public class TvActivity extends AppCompatActivity implements NavigationView.OnNa
     private RecyclerView recyclerView;
     private RvTvAdapter adapter;
     private NavigationView navigationView;
+    private EditText et_cari;
+    private Button btn_cari;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tv);
+        setContentView(R.layout.activity_main);
 
         mContext = this;
 
@@ -59,7 +62,15 @@ public class TvActivity extends AppCompatActivity implements NavigationView.OnNa
 
         vModel = ViewModelProviders.of(this).get(TvViewModel.class);
         vModel.getData().observe(this, getDataObserve);
-        vModel.setData();
+        vModel.setData(null);
+
+        btn_cari.setOnClickListener(v -> {
+            if (et_cari.getText().toString().trim().isEmpty()) {
+                vModel.setData(null);
+            } else {
+                vModel.setData(et_cari.getText().toString());
+            }
+        });
     }
 
     private Observer<ArrayList<MovieTvModels>> getDataObserve = new Observer<ArrayList<MovieTvModels>>() {

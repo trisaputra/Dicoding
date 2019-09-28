@@ -24,12 +24,16 @@ public class MovieViewModel extends ViewModel {
     private MutableLiveData<ArrayList<MovieTvModels>> data = new MutableLiveData<>();
     private static final String API_KEY = "9da414da76778362a273d84187e76699";
 
-    public void setData() {
+    public void setData(@Nullable String cari) {
         AsyncHttpClient client = new AsyncHttpClient();
         final ArrayList<MovieTvModels> dataList = new ArrayList<>();
         String url;
 
-        url = "https://api.themoviedb.org/3/discover/movie?api_key=" + API_KEY + "&language=en-US";
+        if (cari == null) {
+            url = "https://api.themoviedb.org/3/discover/movie?api_key=" + API_KEY + "&language=en-US";
+        } else {
+            url = "https://api.themoviedb.org/3/search/movie?api_key="+API_KEY+"&language=en-US&cari="+cari;
+        }
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
