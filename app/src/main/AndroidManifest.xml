@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailMovieActivity"></activity>
+        <activity android:name=".FavoriteActivity"></activity>
+        <activity android:name=".DetailTvActivity" />
+        <activity android:name=".DetailMovieActivity" />
         <activity android:name=".TvActivity" />
         <activity android:name=".MovieActivity" />
         <activity android:name=".MainActivity">

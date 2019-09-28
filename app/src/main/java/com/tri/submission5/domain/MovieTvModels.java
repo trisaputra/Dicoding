@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class MovieTvModels implements Parcelable {
     private int id;
-    private String title, overview, poster, rating, popularity, releaseDate;
+    private String title, overview, poster, rating, vote_count, releaseDate;
 
     public int getId() {
         return id;
@@ -47,12 +47,12 @@ public class MovieTvModels implements Parcelable {
         this.rating = rating;
     }
 
-    public String getPopularity() {
-        return popularity;
+    public String getVote_count() {
+        return vote_count;
     }
 
-    public void setPopularity(String popularity) {
-        this.popularity = popularity;
+    public void setVote_count(String vote_count) {
+        this.vote_count = vote_count;
     }
 
     public String getReleaseDate() {
@@ -75,7 +75,7 @@ public class MovieTvModels implements Parcelable {
         dest.writeString(this.overview);
         dest.writeString(this.poster);
         dest.writeString(this.rating);
-        dest.writeString(this.popularity);
+        dest.writeString(this.vote_count);
         dest.writeString(this.releaseDate);
     }
 
@@ -88,7 +88,7 @@ public class MovieTvModels implements Parcelable {
         this.overview = in.readString();
         this.poster = in.readString();
         this.rating = in.readString();
-        this.popularity = in.readString();
+        this.vote_count = in.readString();
         this.releaseDate = in.readString();
     }
 

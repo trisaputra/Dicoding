@@ -56,7 +56,7 @@ public class MovieViewModel extends ViewModel {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.d("REPOSITORY", "GAGALLLLLLL!!!");
+                Log.d("REPOSITORY", "Failed");
             }
         });
     }

@@ -123,8 +123,8 @@ public class TvActivity extends AppCompatActivity implements NavigationView.OnNa
                     .into(holder.gambar);
 
             holder.detail.setOnClickListener(view ->{
-                Intent i = new Intent(mContext, DetailMovieActivity.class);
-                i.putExtra("data", data.get(position));
+                Intent i = new Intent(mContext, DetailTvActivity.class);
+                i.putExtra("data_tv", data.get(position));
                 startActivity(i);
             });
         }
@@ -145,13 +145,5 @@ public class TvActivity extends AppCompatActivity implements NavigationView.OnNa
                 gambar = itemView.findViewById(R.id.imgMovie);
             }
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(i);
     }
 }
