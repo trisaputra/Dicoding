@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import com.google.android.material.navigation.NavigationView;
+import com.tri.submission5.detailActivity.DetailMovieActivity;
 import com.tri.submission5.domain.MovieTvModels;
 import com.tri.submission5.viewmodel.MovieViewModel;
 

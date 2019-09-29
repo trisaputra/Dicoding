@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
+import com.tri.submission5.detailActivity.DetailTvActivity;
 import com.tri.submission5.domain.MovieTvModels;
 import com.tri.submission5.viewmodel.TvViewModel;
 

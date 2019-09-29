@@ -1,4 +1,4 @@
-package com.tri.submission5;
+package com.tri.submission5.detailActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.tri.submission5.R;
 import com.tri.submission5.domain.MovieTvModels;
 
 import java.util.Objects;
