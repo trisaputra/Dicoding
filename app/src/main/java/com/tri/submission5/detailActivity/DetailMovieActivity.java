@@ -59,13 +59,13 @@ public class DetailMovieActivity extends AppCompatActivity {
                 .load("https://image.tmdb.org/t/p/w185"+ data.getPoster())
                 .into(gambar);
 
-//        favoriteMovie.setMovieId(data.getId());
-//        favoriteMovie.setTitle(data.getTitle());
-//        favoriteMovie.setOverview(data.getOverview());
-//        favoriteMovie.setPoster(data.getPoster());
-//        favoriteMovie.setReleaseDate(data.getReleaseDate());
-//        favoriteMovie.setVote_count(data.getVote_count());
-//        favoriteMovie.setRating(data.getRating());
+        favoriteMovie.setMovieId(data.getId());
+        favoriteMovie.setTitle(data.getTitle());
+        favoriteMovie.setOverview(data.getOverview());
+        favoriteMovie.setPoster(data.getPoster());
+        favoriteMovie.setReleaseDate(data.getReleaseDate());
+        favoriteMovie.setVote_count(data.getVote_count());
+        favoriteMovie.setRating(data.getRating());
 
         fab.setOnClickListener(v -> {
             if (!isFav) {

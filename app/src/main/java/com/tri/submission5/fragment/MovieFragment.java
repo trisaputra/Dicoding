@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tri.submission5.R;
@@ -30,6 +31,8 @@ public class MovieFragment extends Fragment {
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private FavMovieViewModel vModel;
+
+    public MovieFragment(){};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,23 +53,18 @@ public class MovieFragment extends Fragment {
 
         vModel = ViewModelProviders.of(this).get(FavMovieViewModel.class);
         vModel.getData().observe(this, getData);
-
+        showRecyclerAdapter();
 
         recyclerView = view.findViewById(R.id.recyclerView);
         progressBar = view.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
     }
 
-//    private Observer<ArrayList<MovieFav>> getListData = new Observer<ArrayList<MovieFav>>() {
-//        @Override
-//        public void onChanged(@Nullable ArrayList<MovieFav> favoriteMovies) {
-//            if (favoriteMovies.size() > 0) {
-//                adapter.setData(favoriteMovies);
-//            } else {
-//                Toast.makeText(getActivity(), "Gagal mengambil data", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//    };
+    private void showRecyclerAdapter() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+    }
 
     private Observer<ArrayList<MovieFav>> getData = new Observer<ArrayList<MovieFav>>() {
         @Override

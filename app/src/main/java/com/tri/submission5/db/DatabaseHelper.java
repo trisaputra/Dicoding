@@ -9,10 +9,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
-    /**
-     * MOVIE TABLE
-     */
-
     private static final String SQL_CREATE_TABLE_MOVIE = String.format("CREATE TABLE %s"
                     +" (%s INTEGER PRIMARY KEY AUTOINCREMENT,"+
                     " %s INTEGER DEFAULT 0,"+
@@ -32,9 +28,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             AppSchemas.MovieColumns.VOTE,
             AppSchemas.MovieColumns.RATING);
 
-    /**
-     * TV TABLE
-     */
 
     private static final String SQL_CREATE_TABLE_TV = String.format("CREATE TABLE %s"
                     +" (%s INTEGER PRIMARY KEY AUTOINCREMENT,"+

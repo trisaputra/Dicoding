@@ -57,6 +57,7 @@ public class MovieViewModel extends ViewModel {
                         model.setReleaseDate(data.getString("release_date"));
                         model.setOverview(data.getString("overview"));
                         model.setPoster(data.getString("poster_path"));
+//                        model.setVote_count(data.getString("vote_count"));
                         model.setRating(String.valueOf(data.getDouble("vote_average")));
                         dataList.add(model);
                     }
