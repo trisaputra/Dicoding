@@ -26,12 +26,16 @@ public class MovieViewModel extends ViewModel {
     private MutableLiveData<ArrayList<MovieTvModels>> data = new MutableLiveData<>();
     private static final String API_KEY = "9da414da76778362a273d84187e76699";
 
-    public void setData() {
+    public void setData(Context context, @Nullable String cari) {
         AsyncHttpClient client = new AsyncHttpClient();
         final ArrayList<MovieTvModels> dataList = new ArrayList<>();
         String url;
 
-        url = "https://api.themoviedb.org/3/discover/movie?api_key=" + API_KEY + "&language=en-US";
+        if (cari == null) {
+            url = "https://api.themoviedb.org/3/discover/movie?api_key=" + API_KEY + "&language=en-US";
+        } else {
+            url = "https://api.themoviedb.org/3/search/movie?api_key="+API_KEY+"&language=en-US&query="+cari;
+        }
         final ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Mohon tunggu...");
@@ -58,13 +62,15 @@ public class MovieViewModel extends ViewModel {
                     }
                     data.postValue(dataList);
                 } catch (JSONException e) {
+                    progressDialog.dismiss();
                     Log.d("REPOSITORY", e.getMessage());
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.d("REPOSITORY", "Failed");
+                progressDialog.dismiss();
+                Log.d("REPOSITORY", error.getMessage());
             }
         });
     }
