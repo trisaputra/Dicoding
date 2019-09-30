@@ -7,8 +7,8 @@ import android.provider.BaseColumns;
 import java.security.PublicKey;
 
 public class AppSchemas {
-    public static final String AUTHORITY_MOVIE = "";
-    public static final String AUTHORITY_TV = "";
+    public static final String AUTHORITY_MOVIE = "com.tri.submission5.movie";
+    public static final String AUTHORITY_TV = "com.tri.submission5.tv";
     private static final String SCHEME = "content";
 
     private AppSchemas(){
@@ -31,7 +31,7 @@ public class AppSchemas {
     }
 
     public static final class TvColumns implements BaseColumns {
-        public static final String TABLE_TV = "movie";
+        public static final String TABLE_TV = "tv";
         public static final String ID_TV= "ID_TV";
         public static final String TITLE = "TITLE";
         public static final String OVERVIEW = "OVERVIEW";

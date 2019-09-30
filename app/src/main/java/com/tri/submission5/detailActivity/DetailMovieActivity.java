@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.tri.submission5.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.tri.submission5.adapter.FavoriteMovieAdapter;
 import com.tri.submission5.db.MovieHelper;
 import com.tri.submission5.domain.MovieFav;
 import com.tri.submission5.domain.MovieTvModels;
@@ -52,20 +53,23 @@ public class DetailMovieActivity extends AppCompatActivity {
         idMovie.setText(String.valueOf(data.getId()));
         judul.setText(data.getTitle());
         release.setText(data.getReleaseDate());
-        populer.setText(String.valueOf(data.getVote_count()));
-        ratting.setText(data.getRating());
+        ratting.setText(String.valueOf(data.getVote_count()));
         overview.setText(data.getOverview());
         Glide.with(this)
                 .load("https://image.tmdb.org/t/p/w185"+ data.getPoster())
                 .into(gambar);
 
-//        favoriteMovie.setMovieId(data.getId());
-//        favoriteMovie.setTitle(data.getTitle());
-//        favoriteMovie.setOverview(data.getOverview());
-//        favoriteMovie.setPoster(data.getPoster());
-//        favoriteMovie.setReleaseDate(data.getReleaseDate());
-//        favoriteMovie.setVote_count(data.getVote_count());
-//        favoriteMovie.setRating(data.getRating());
+        moviex = MovieHelper.getIntance(this);
+        favoriteMovie = new MovieFav();
+        moviex.open();
+
+        favoriteMovie.setMovieId(data.getId());
+        favoriteMovie.setTitle(data.getTitle());
+        favoriteMovie.setOverview(data.getOverview());
+        favoriteMovie.setPoster(data.getPoster());
+        favoriteMovie.setReleaseDate(data.getReleaseDate());
+        favoriteMovie.setVote_count(data.getVote_count());
+        favoriteMovie.setRating(data.getRating());
 
         fab.setOnClickListener(v -> {
             if (!isFav) {
@@ -74,7 +78,6 @@ public class DetailMovieActivity extends AppCompatActivity {
                 if (result > 0){
                     favoriteMovie.setId((int) result);;
                     Snackbar.make(fab, "sukses", Snackbar.LENGTH_SHORT).show();
-
                 }
                 isFav = true;
             } else {
