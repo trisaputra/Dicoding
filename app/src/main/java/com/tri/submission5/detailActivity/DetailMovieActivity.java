@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.tri.submission5.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -20,14 +21,13 @@ import com.tri.submission5.domain.MovieTvModels;
 import java.util.Objects;
 
 public class DetailMovieActivity extends AppCompatActivity {
-
+    private String mJudul, mOverview, mGambar, mPopuler, mRelease, mRating;
     private Toolbar toolbar;
     private MovieTvModels data;
     private TextView idMovie, judul, release, populer, ratting, overview;
     private ImageView gambar;
     private FloatingActionButton fab;
     private MovieHelper moviex;
-    private int idData;
     private MovieFav favoriteMovie;
 
     private boolean isFav = false;
@@ -42,7 +42,7 @@ public class DetailMovieActivity extends AppCompatActivity {
         gambar = findViewById(R.id.img);
         judul = findViewById(R.id.tv_judul);
         release = findViewById(R.id.tv_release);
-        populer = findViewById(R.id.tv_populer);
+        populer = findViewById(R.id.tv_vote);
         ratting = findViewById(R.id.tv_ratting);
         overview = findViewById(R.id.tv_deksripsi);
         fab = findViewById(R.id.fab_favorite);
@@ -52,12 +52,16 @@ public class DetailMovieActivity extends AppCompatActivity {
         idMovie.setText(String.valueOf(data.getId()));
         judul.setText(data.getTitle());
         release.setText(data.getReleaseDate());
-        populer.setText(String.valueOf(data.getVote_count()));
-        ratting.setText(data.getRating());
+        ratting.setText(String.valueOf(data.getVote_count()));
         overview.setText(data.getOverview());
         Glide.with(this)
                 .load("https://image.tmdb.org/t/p/w185"+ data.getPoster())
                 .into(gambar);
+
+
+        moviex = MovieHelper.getIntance(getApplicationContext());
+        favoriteMovie = new MovieFav();
+        moviex.open();
 
         favoriteMovie.setMovieId(data.getId());
         favoriteMovie.setTitle(data.getTitle());
@@ -72,9 +76,8 @@ public class DetailMovieActivity extends AppCompatActivity {
                 fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
                 long result = moviex.addFav(favoriteMovie);
                 if (result > 0){
-                    favoriteMovie.setId((int) result);;
+                    favoriteMovie.setId((int) result);
                     Snackbar.make(fab, "sukses", Snackbar.LENGTH_SHORT).show();
-
                 }
                 isFav = true;
             } else {
@@ -93,5 +96,16 @@ public class DetailMovieActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener((View v) -> onBackPressed());
     }
 
+    private void showData(){
+        Glide.with(this)
+                .load(mGambar)
+                .apply(new RequestOptions().override(100, 150))
+                .into(gambar);
+        judul.setText(mJudul);
+        overview.setText(mOverview);
+        release.setText(mRelease);
+        populer.setText(mPopuler);
+        ratting.setText(mRating);
+    }
 
 }

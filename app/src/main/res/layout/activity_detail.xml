@@ -105,12 +105,12 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/tv_populer"
+                                    android:id="@+id/tv_vote"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight=".30"
                                     android:paddingTop="1dp"
-                                    android:text="Populer"
+                                    android:text="Vote"
                                     android:textStyle="bold" />
 
                             </LinearLayout>

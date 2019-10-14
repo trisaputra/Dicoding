@@ -1,6 +1,5 @@
 package com.tri.submission5.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,27 +12,26 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tri.submission5.R;
-import com.tri.submission5.adapter.FavoriteMovieAdapter;
-import com.tri.submission5.detailActivity.DetailMovieFavorite;
+import com.tri.submission5.adapter.FavoriteTvAdapter;
 import com.tri.submission5.domain.MovieFav;
+import com.tri.submission5.domain.TvFav;
 import com.tri.submission5.viewmodel.FavMovieViewModel;
+import com.tri.submission5.viewmodel.FavTvViewModel;
 
 import java.util.ArrayList;
 
-
-public class MovieFragment extends Fragment {
-    FavoriteMovieAdapter adapter;
+public class TvFragment extends Fragment {
+    FavoriteTvAdapter adapter;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
-    private FavMovieViewModel vModel;
+    private FavTvViewModel vModel;
 
-    public MovieFragment(){
+    public TvFragment(){
 
-    }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,51 +44,38 @@ public class MovieFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fav_movie, container, false);
 
         return view;
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.recyclerview);
         progressBar = view.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
-        vModel = ViewModelProviders.of(this).get(FavMovieViewModel.class);
+        vModel = ViewModelProviders.of(this).get(FavTvViewModel.class);
         vModel.getData().observe(this, getData);
         vModel.setData(getActivity().getApplicationContext());
         showRecyclerAdapter();
+    }
 
+    private void showRecyclerAdapter(){
 
     }
 
-    private void showRecyclerAdapter() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
-    }
-
-    private Observer<ArrayList<MovieFav>> getData = new Observer<ArrayList<MovieFav>>() {
+    private Observer<ArrayList<TvFav>> getData = new Observer<ArrayList<TvFav>>() {
         @Override
-        public void onChanged(ArrayList<MovieFav> movieFavs) {
-            if (movieFavs.size() > 0){
-                adapter.setData(movieFavs);
+        public void onChanged(ArrayList<TvFav> tvFavs) {
+            if (tvFavs.size() > 0){
+                adapter.setData(tvFavs);
             } else {
                 Toast.makeText(getContext(), "Gagall mengambil data", Toast.LENGTH_SHORT).show();
             }
         }
     };
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if (data != null){
-            if (requestCode == DetailMovieFavorite.REQUEST_DELETE){
-                int position = data.getIntExtra("index", 0);
-                adapter.removeData(position);
-                Toast.makeText(getContext(), "Data telah dihapus", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
 
 }
+

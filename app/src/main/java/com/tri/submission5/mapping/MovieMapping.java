@@ -29,6 +29,7 @@ public class MovieMapping {
             String release = mCursor.getString(mCursor.getColumnIndexOrThrow(RELEASE));
             String rating = mCursor.getString(mCursor.getColumnIndexOrThrow(RATING));
             String vote = mCursor.getString(mCursor.getColumnIndexOrThrow(VOTE));
+            movieFavs.add(new MovieFav(id, movieId, judul, overview, poster, release, rating, vote));
         }
         return movieFavs;
     }

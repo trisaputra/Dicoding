@@ -103,7 +103,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_favorite) {
-
+            Intent i = new Intent(mContext, FavoriteActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+            finish();
         } else if (id == R.id.nav_alarm) {
 
         }

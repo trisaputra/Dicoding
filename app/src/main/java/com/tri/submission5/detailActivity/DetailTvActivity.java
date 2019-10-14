@@ -35,7 +35,7 @@ public class DetailTvActivity extends AppCompatActivity {
         gambar = findViewById(R.id.img);
         judul = findViewById(R.id.tv_judul);
         release = findViewById(R.id.tv_release);
-        populer = findViewById(R.id.tv_populer);
+        populer = findViewById(R.id.tv_vote);
         ratting = findViewById(R.id.tv_ratting);
         overview = findViewById(R.id.tv_deksripsi);
         fab = findViewById(R.id.fab_favorite);

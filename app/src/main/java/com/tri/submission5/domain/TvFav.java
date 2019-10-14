@@ -5,12 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import static android.provider.BaseColumns._ID;
-import static com.tri.submission5.db.AppSchemas.MovieColumns.IMAGE;
-import static com.tri.submission5.db.AppSchemas.MovieColumns.OVERVIEW;
-import static com.tri.submission5.db.AppSchemas.MovieColumns.RATING;
-import static com.tri.submission5.db.AppSchemas.MovieColumns.RELEASE;
-import static com.tri.submission5.db.AppSchemas.MovieColumns.TITLE;
-import static com.tri.submission5.db.AppSchemas.MovieColumns.VOTE;
+import static com.tri.submission5.db.AppSchemas.TvColumns.IMAGE;
+import static com.tri.submission5.db.AppSchemas.TvColumns.OVERVIEW;
+import static com.tri.submission5.db.AppSchemas.TvColumns.RATING;
+import static com.tri.submission5.db.AppSchemas.TvColumns.RELEASE;
+import static com.tri.submission5.db.AppSchemas.TvColumns.TITLE;
+import static com.tri.submission5.db.AppSchemas.TvColumns.VOTE;
 import static com.tri.submission5.db.AppSchemas.TvColumns.ID_TV;
 import static com.tri.submission5.db.AppSchemas.getColumnInt;
 import static com.tri.submission5.db.AppSchemas.getColumnString;

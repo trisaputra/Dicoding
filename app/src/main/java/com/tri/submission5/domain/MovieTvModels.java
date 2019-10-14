@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class MovieTvModels implements Parcelable {
     private int id;
-    private String title, overview, poster, rating, vote_count, releaseDate;
+    private String title, overview, poster, rating, vote_count, releaseDate, type;
 
     public int getId() {
         return id;
@@ -63,6 +63,14 @@ public class MovieTvModels implements Parcelable {
         this.releaseDate = releaseDate;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -77,6 +85,7 @@ public class MovieTvModels implements Parcelable {
         dest.writeString(this.rating);
         dest.writeString(this.vote_count);
         dest.writeString(this.releaseDate);
+        dest.writeString(this.type);
     }
 
     public MovieTvModels() {
@@ -90,6 +99,7 @@ public class MovieTvModels implements Parcelable {
         this.rating = in.readString();
         this.vote_count = in.readString();
         this.releaseDate = in.readString();
+        this.type = in.readString();
     }
 
     public static final Parcelable.Creator<MovieTvModels> CREATOR = new Parcelable.Creator<MovieTvModels>() {

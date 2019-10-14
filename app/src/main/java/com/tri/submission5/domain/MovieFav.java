@@ -28,6 +28,7 @@ public class MovieFav implements Parcelable {
         this.rating = in.readString();
         this.vote_count = in.readString();
         this.releaseDate = in.readString();
+
     }
 
     public static final Creator<MovieFav> CREATOR = new Creator<MovieFav>() {

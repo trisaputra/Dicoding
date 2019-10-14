@@ -8,5 +8,6 @@
     <string name="imax">iMAX</string>
     <string name="detail">Detail</string>
     <string name="judul">Judul</string>
+    <string name="movie">Movie</string>
 
 </resources>

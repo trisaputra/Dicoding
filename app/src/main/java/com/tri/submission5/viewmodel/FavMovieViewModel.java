@@ -27,6 +27,7 @@ public class FavMovieViewModel extends ViewModel {
         try{
             Cursor cursor = context.getContentResolver().query(CONTENT_URI, null, null,  null, null);
             ArrayList<MovieFav> movieFavorite = MovieMapping.mapCursorToArrayList(cursor);
+            data.postValue(movieFavorite);
         } catch (Exception e){
             Toast.makeText(context, "Failed FETCH DATABASE", Toast.LENGTH_SHORT).show();
         }
